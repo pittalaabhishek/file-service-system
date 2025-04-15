@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package files;
+
+option go_package = ".;files";
+
+service FileService {
+    rpc Upload(stream Chunk) returns (UploadStatus) {}
+    rpc Download(FileRequest) returns (stream Chunk) {}
+    rpc GetMetadata(FileRequest) returns (FileMetadata) {}
+}
+
+message Chunk {
+    bytes Content = 1;
+    string FileName = 2;
+}
+
+message UploadStatus {
+    string Message = 1;
+    bool Success = 2;
+}
+
+message FileRequest {
+    string FileName = 1;
+}
+
+message FileMetadata {
+    string FileName = 1;
+    uint64 Size = 2;
+    string CreatedAt = 3;
+    string ModifiedAt = 4;
+}
