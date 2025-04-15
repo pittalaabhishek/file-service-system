@@ -14,7 +14,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	pb "file-service/proto/files"
+	pb "file-service-system/proto"
 )
 
 type server struct {
